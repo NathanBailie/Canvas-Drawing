@@ -6,13 +6,19 @@
     user-select: none;
 }
 
+:root {
+    --navbar-color: #7671bf;
+    --text-color: #ebebeb;
+    --button-reset-bgcolor: #d52e2e;
+}
+
 .settings {
     width: 100vw;
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #7671bf;
+    background: var(--navbar-color);
     padding: 0 15px;
     gap: 55px;
 }
@@ -25,7 +31,7 @@
 }
 
 .setting h2 {
-    color: #ebebeb;
+    color: var(--text-color);
     margin-right: 15px;
 }
 
@@ -34,15 +40,25 @@
     cursor: pointer;
 }
 
+.setting select {
+    height: 60%;
+    border-radius: 8px;
+    padding: 0 5px;
+    background: #f7e7f4;
+    cursor: pointer;
+    outline: none;
+    font-size: 16px;
+}
+
 button.reset {
     height: 70%;
     padding: 0px 15px;
     font-size: 18px;
     border-radius: 8px;
     cursor: pointer;
-    background: #d52e2e;
+    background: var(--button-reset-bgcolor);
     border: 1px outset black;
-    color: #ebebeb;
+    color: var(--text-color);
     font-weight: bold;
 }
 

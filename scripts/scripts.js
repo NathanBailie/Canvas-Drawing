@@ -2,21 +2,44 @@
 
 let canvas = document.querySelector('.canvas');
 let ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 
-let resetButton = document.querySelector('.reset');
+let joiningStyleInput = document.querySelector('#joiningStyle');
+let endingStyleInput = document.querySelector('#endingStyle');
+let joiningStyle = joiningStyleInput.value;
+let endingStyle = endingStyleInput.value;
+ctx.lineJoin = 'miter';
+ctx.lineCap = endingStyle;
+
+joiningStyleInput.addEventListener('change', function (e) {
+    ctx.lineJoin = e.target.value;
+});
+
+endingStyleInput.addEventListener('change', function (e) {
+    ctx.lineCap = e.target.value;
+});
+
 let thicknessInput = document.querySelector('#thickness');
 let colorInput = document.querySelector('#color');
 let thickness = thicknessInput.value;
 let color = colorInput.value;
+ctx.lineWidth = thickness;
+ctx.strokeStyle = color;
 
+thicknessInput.addEventListener('input', function (e) {
+    ctx.lineWidth = e.target.value;
+});
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+colorInput.addEventListener('input', function (e) {
+    color = e.target.value;
+});
 
-ctx.strokeStyle = colorInput.value;
-ctx.lineWidth = thicknessInput.value;
-ctx.lineJoin = 'round';
-ctx.lineCap = 'round';
+let resetButton = document.querySelector('.reset');
+
+resetButton.addEventListener('click', function (e) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+});
 
 let isDrawing = false;
 let lastX = 0;
@@ -41,17 +64,3 @@ canvas.addEventListener('mousemove', onDraw);
 
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
-
-// change thickness and color
-thicknessInput.addEventListener('input', function (e) {
-    ctx.lineWidth = e.target.value;
-});
-
-colorInput.addEventListener('input', function (e) {
-    color = e.target.value;
-});
-
-// reset canvas
-resetButton.addEventListener('click', () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-})
