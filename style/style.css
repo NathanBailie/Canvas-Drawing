@@ -39,8 +39,10 @@ button.reset {
     font-size: 18px;
     border-radius: 8px;
     cursor: pointer;
-    background: #f96868;
+    background: #d52e2e;
     border: 1px outset black;
+    color: #ebebeb;
+    font-weight: bold;
 }
 
 button.reset:hover {
