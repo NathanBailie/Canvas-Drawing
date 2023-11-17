@@ -3,6 +3,7 @@
 let canvas = document.querySelector('.canvas');
 let ctx = canvas.getContext('2d');
 
+let resetButton = document.querySelector('.reset');
 let thicknessInput = document.querySelector('#thickness');
 let colorInput = document.querySelector('#color');
 let thickness = thicknessInput.value;
@@ -21,7 +22,7 @@ let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
 
-function draw(e) {
+function onDraw(e) {
     if (!isDrawing) return;
     ctx.strokeStyle = color;
     ctx.beginPath();
@@ -36,7 +37,7 @@ canvas.addEventListener('mousedown', (e) => {
     [lastX, lastY] = [e.offsetX, e.offsetY];
 });
 
-canvas.addEventListener('mousemove', draw);
+canvas.addEventListener('mousemove', onDraw);
 
 canvas.addEventListener('mouseup', () => isDrawing = false);
 canvas.addEventListener('mouseout', () => isDrawing = false);
@@ -49,3 +50,8 @@ thicknessInput.addEventListener('input', function (e) {
 colorInput.addEventListener('input', function (e) {
     color = e.target.value;
 });
+
+// reset canvas
+resetButton.addEventListener('click', () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+})
