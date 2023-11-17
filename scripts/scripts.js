@@ -5,11 +5,12 @@ let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+// Here we can change the drawing style
 let joiningStyleInput = document.querySelector('#joiningStyle');
 let endingStyleInput = document.querySelector('#endingStyle');
 let joiningStyle = joiningStyleInput.value;
 let endingStyle = endingStyleInput.value;
-ctx.lineJoin = 'miter';
+ctx.lineJoin = joiningStyle;
 ctx.lineCap = endingStyle;
 
 joiningStyleInput.addEventListener('change', function (e) {
@@ -20,6 +21,7 @@ endingStyleInput.addEventListener('change', function (e) {
     ctx.lineCap = e.target.value;
 });
 
+// Here we can change the width of the line and its color
 let thicknessInput = document.querySelector('#thickness');
 let colorInput = document.querySelector('#color');
 let thickness = thicknessInput.value;
@@ -35,12 +37,14 @@ colorInput.addEventListener('input', function (e) {
     color = e.target.value;
 });
 
+// Here we can clear the canvas
 let resetButton = document.querySelector('.reset');
 
 resetButton.addEventListener('click', function (e) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 });
 
+// Here are the variables and functionality needed for drawing
 let isDrawing = false;
 let lastX = 0;
 let lastY = 0;
