@@ -3,7 +3,7 @@
 let canvas = document.querySelector('.canvas');
 let ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.height = window.innerHeight - 50;
 
 // Here we can change the drawing style
 let joiningStyleInput = document.querySelector('#joiningStyle');
